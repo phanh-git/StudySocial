@@ -1,0 +1,100 @@
+.group-detail-page {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.group-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.group-detail-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.group-detail-info {
+  flex: 1;
+}
+
+.group-detail-info h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.group-detail-info p {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.group-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.creator {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.group-detail-actions {
+  flex-shrink: 0;
+}
+
+.group-detail-feed .create-post-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  margin-bottom: 12px;
+}
+
+.group-detail-feed .create-post-bar:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.group-detail-feed .create-prompt {
+  flex: 1;
+  background: #f3f4f6;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.group-detail-feed .empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-icon { font-size: 48px; margin-bottom: 16px; }
+
+.loading-center {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.load-more {
+  width: 100%;
+  margin-top: 8px;
+}
