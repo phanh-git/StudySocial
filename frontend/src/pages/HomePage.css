@@ -1,0 +1,170 @@
+.home-page {
+  min-height: calc(100vh - 60px);
+}
+
+.hero {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 80px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  max-width: 520px;
+}
+
+.hero-title {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.highlight {
+  color: #fbbf24;
+}
+
+.hero-desc {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0 0 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn-primary {
+  background: white;
+  color: #4f46e5;
+}
+
+.hero-actions .btn-primary:hover {
+  background: #f3f4f6;
+}
+
+.hero-actions .btn-outline {
+  border-color: white;
+  color: white;
+}
+
+.hero-actions .btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.hero-visual {
+  flex-shrink: 0;
+}
+
+.hero-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.hero-post {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.hp-avatar {
+  width: 40px;
+  height: 40px;
+  background: #4f46e5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.hp-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.hp-text {
+  font-size: 14px;
+  color: #374151;
+}
+
+.hp-reactions {
+  font-size: 13px;
+  color: #6b7280;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 10px;
+}
+
+.features {
+  padding: 80px 16px;
+}
+
+.features-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #111827;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cta {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: white;
+  text-align: center;
+  padding: 80px 16px;
+}
+
+.cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.cta p {
+  font-size: 16px;
+  opacity: 0.8;
+  margin: 0 0 32px;
+}

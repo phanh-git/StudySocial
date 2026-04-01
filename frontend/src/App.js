@@ -1,86 +1,48 @@
-import { useState, useEffect } from 'react';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import FeedPage from './pages/FeedPage';
+import GroupsPage from './pages/GroupsPage';
+import GroupDetailPage from './pages/GroupDetailPage';
+import ProfilePage from './pages/ProfilePage';
+
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  if (loading) return <div style={{display:'flex',justifyContent:'center',padding:'40px'}}><div className="spinner"></div></div>;
+  return user ? children : <Navigate to="/login" />;
+};
+
+const AppContent = () => {
+  return (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/feed" element={<FeedPage />} />
+        <Route path="/groups" element={<GroupsPage />} />
+        <Route path="/groups/:id" element={<GroupDetailPage />} />
+        <Route path="/profile" element={
+          <PrivateRoute><ProfilePage /></PrivateRoute>
+        } />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </div>
+  );
+};
 
 function App() {
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [name, setName] = useState('');
-
-  // Gọi API khi component mount
-  useEffect(() => {
-    fetchHello();
-  }, []);
-
-  const fetchHello = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('http://localhost:8080/api/hello');
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      const data = await response.json();
-      setMessage(data.message);
-      setError(null);
-    } catch (err) {
-      setError('Failed to fetch data from backend: ' + err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchHelloWithName = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`http://localhost:8080/api/hello/name?name=${encodeURIComponent(name)}`);
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      const data = await response.json();
-      setMessage(data.message);
-      setError(null);
-    } catch (err) {
-      setError('Failed to fetch data from backend: ' + err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React + Spring Boot</h1>
-        
-        {loading && <p>Loading...</p>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {!loading && !error && (
-          <div>
-            <h2>{message}</h2>
-          </div>
-        )}
-        
-        <div style={{ marginTop: '20px' }}>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={{ padding: '10px', marginRight: '10px' }}
-          />
-          <button onClick={fetchHelloWithName} style={{ padding: '10px' }}>
-            Say Hello
-          </button>
-        </div>
-        
-        <button onClick={fetchHello} style={{ marginTop: '20px', padding: '10px' }}>
-          Refresh
-        </button>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
