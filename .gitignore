@@ -1,0 +1,45 @@
+# --- Hệ điều hành (OS) ---
+.DS_Store
+Thumbs.db
+
+# --- Frontend (React - Node.js) ---
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# --- Backend (Java Spring Boot) ---
+# Build chuyên dụng cho Maven
+backend/target/
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.utilsReleaseBackup
+backend/pom.xml.vBackup
+backend/release.properties
+
+# Build chuyên dụng cho Gradle
+backend/.gradle/
+backend/build/
+
+# Tệp cấu hình cá nhân/nhạy cảm
+backend/src/main/resources/application-local.properties
+backend/.env
+
+# --- IDEs (IntelliJ, VS Code, Eclipse) ---
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+*.sublime-project
+*.sublime-workspace
+
+# --- Git ---
+# Không cần ignore thư mục .git vì Git mặc định không bao giờ commit chính nó
