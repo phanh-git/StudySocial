@@ -1,16 +1,17 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.request.UpdateUserRequest;
 import com.example.demo.dto.response.UserResponse;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -30,15 +31,15 @@ public class UserController {
     @PutMapping("/me")
     public ResponseEntity<UserResponse> updateCurrentUser(
             @AuthenticationPrincipal UserDetails userDetails,
-            @RequestBody Map<String, String> body
+            @Valid @RequestBody UpdateUserRequest request
     ) {
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        if (body.containsKey("bio")) {
-            user.setBio(body.get("bio"));
+        if (request.getBio() != null) {
+            user.setBio(request.getBio());
         }
-        if (body.containsKey("avatarUrl")) {
-            user.setAvatarUrl(body.get("avatarUrl"));
+        if (request.getAvatarUrl() != null) {
+            user.setAvatarUrl(request.getAvatarUrl());
         }
         return ResponseEntity.ok(authService.mapToUserResponse(userRepository.save(user)));
     }

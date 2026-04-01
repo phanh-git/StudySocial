@@ -1,13 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.request.SubjectRequest;
 import com.example.demo.dto.response.SubjectResponse;
 import com.example.demo.service.SubjectService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/subjects")
@@ -28,7 +29,7 @@ public class SubjectController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<SubjectResponse> createSubject(@RequestBody Map<String, String> body) {
-        return ResponseEntity.ok(subjectService.createSubject(body.get("name"), body.get("description")));
+    public ResponseEntity<SubjectResponse> createSubject(@Valid @RequestBody SubjectRequest request) {
+        return ResponseEntity.ok(subjectService.createSubject(request.getName(), request.getDescription()));
     }
 }
