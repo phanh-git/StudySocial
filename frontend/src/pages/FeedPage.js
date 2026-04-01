@@ -39,7 +39,7 @@ const FeedPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [filters]);
+  }, []);
 
   useEffect(() => {
     fetchPosts(0, filters);
